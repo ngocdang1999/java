@@ -26,6 +26,7 @@ public class client {
         
         DataOutputStream outtoServer = new DataOutputStream(clientSocket.getOutputStream()); //mở luồng outputstream ghi dữ liệu đến server
         outtoServer.writeBytes(readDB + "\n");//dùng luồng trên ghi dử liệu
+        
         BufferedReader inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));//nhận dữ liệu từ server
         String sentenceServerChange = inFromServer.readLine();
         System.out.println("Server đã chuyễn: " + sentenceServerChange);

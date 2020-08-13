@@ -28,8 +28,6 @@ public class lient {
         //Gửi dữ liệu qua người nhận
         
         DatagramSocket clientSocket = new DatagramSocket();
-        
-        //gói dữ liệu
         byte[] sentData = new byte[1024];
         sentData = sentence.getBytes();
         InetAddress Ipaddress = InetAddress.getByName("localhost");
@@ -50,7 +48,7 @@ public class lient {
         String modifiedsentence = new String(receivePacket.getData());
         
         //in ra màn hình
-        System.out.println("Kết quả:" + modifiedsentence + "\n");
+        System.out.println("Kết quả:" + modifiedsentence.trim() + "\n");
         
         //dong kết nồi
         
