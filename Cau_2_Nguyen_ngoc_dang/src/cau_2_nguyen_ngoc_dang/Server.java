@@ -21,7 +21,10 @@ import java.util.ArrayList;
  */
 public class Server {
     public static void main(String[] args) throws FileNotFoundException, IOException {
+        try {
+
             ArrayList<CauHoi> listCH = new ArrayList<CauHoi>();
+                try {
                 FileReader fr = new FileReader("cauhoi.txt");
                 BufferedReader br = new BufferedReader(fr);
                 String s = "";
@@ -32,6 +35,9 @@ public class Server {
                 }
                 br.close();
                 fr.close();
+                            
+                } catch (Exception e) {
+                }
             ServerSocket myServer = new ServerSocket(2800);
             System.out.println("Khoi tao server");
             while (true) {                
@@ -43,7 +49,7 @@ public class Server {
                 for(int i=0;i<listCH.size();i++){
                     String messege = "";
                     CauHoi ch = listCH.get(i);
-                     s = ch.Question +"\n"+ch.Suggestion;
+                    String s = ch.Question +"\n"+ch.Suggestion;
                     dos.writeUTF(s);
                     String dap_an = dis.readUTF();
                     if(dap_an.equalsIgnoreCase(ch.Answer)){
@@ -51,9 +57,11 @@ public class Server {
                     }else{
                         messege += "Tra loi sai";
                     }
-                    
                     dos.writeUTF(messege);
                 }
                 }
+                        
+        } catch (Exception e) {
+        }
     }
 }

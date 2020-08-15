@@ -18,13 +18,16 @@ import java.util.Scanner;
  */
 public class Client {
     public static void main(String[] args) throws IOException {
+
             Socket socket = new Socket("localhost", 2800);
             DataInputStream dis = new DataInputStream(socket.getInputStream());
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
             
             //xu ly
+            System.out.println("nhap:");
             Scanner sc = new Scanner(System.in);
             String message = "";
+        
             while(true){
                 String s = dis.readUTF();
                 System.out.println(s);
@@ -35,7 +38,7 @@ public class Client {
                 System.out.println(message);
                 System.out.println("");
                 if(message.equalsIgnoreCase("Tra loi sai")){
-                    System.out.println("ro choi ket thuc");
+                    System.out.println("Tro choi ket thuc");
                     socket.close();
                 }
             }
